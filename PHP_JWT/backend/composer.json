@@ -1,0 +1,18 @@
+{
+    "name": "renato/php_jwt",
+    "autoload": {
+        "psr-4": {
+            "app\\":"app"
+        }
+    },
+    "authors": [
+        {
+            "name": "NatoRodrigues",
+            "email": "renwise2.0@gmail.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt" : "^6.10",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

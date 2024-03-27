@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<link rel="stylesheet" href="styles.css"> <!-- Link para o arquivo CSS -->
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm" action="index.html">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="test@example.com"><br><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" value="123456"><br><br>
+            <button type="submit">Login</button> <!-- Alterado o tipo de botão para submit -->
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+    const form = document.querySelector("#loginForm");
+
+    axios.defaults.baseURL = 'http://localhost:8000';
+    
+    form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        console.log('submit');
+
+        try{
+            const formData = new FormData(event.target);
+            const{data} = await axios.post('../backend/public/login.php', formData);
+            console.log(data);
+        }
+        catch(error){
+            console.log(error);
+        }
+    });
+
+    </script>
+</body>
+</html>
