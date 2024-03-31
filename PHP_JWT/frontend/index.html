@@ -15,14 +15,17 @@
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password" value="123456"><br><br>
             <button type="submit">Login</button> <!-- Alterado o tipo de botão para submit -->
+            <button class="auth_btn">Verificar auth</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
     const form = document.querySelector("#loginForm");
+    const auth_btn = document.querySelector(".auth_btn");
 
-    axios.defaults.baseURL = 'http://localhost:8000';
+
+    axios.defaults.baseURL = 'http://localhost:8001';
     
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
@@ -31,13 +34,28 @@
         try{
             const formData = new FormData(event.target);
             const{data} = await axios.post('../backend/public/login.php', formData);
-            console.log(data);
+            const jwt_string = JSON.stringify(data);
+            sessionStorage.setItem('session', jwt_string);
+            
         }
         catch(error){
             console.log(error);
         }
     });
-
+        auth_btn.addEventListener('click', async () => {
+            try{
+                const auth_session = "Bearer " + sessionStorage.getItem('session');
+                const {data} = await axios.get('../backend/public/auth.php',{
+                    headers:{
+                        "Authorization": auth_session
+                    }
+                })
+                console.log(data)
+            }
+            catch(error){
+                console.log('erro');
+            }
+            });
     </script>
 </body>
 </html>
