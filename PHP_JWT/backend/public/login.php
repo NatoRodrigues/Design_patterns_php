@@ -47,7 +47,10 @@ try {
         ];
         $encode = JWT::encode($payload, $_ENV['KEY'], 'HS256');
         
-        echo json_encode(["success" => "User created successfully", "token" => $encode]);
+        echo json_encode([
+            "success" => "User created successfully", 
+            "token" => $encode,
+            "payload" => $payload]);
     } else {
         http_response_code(500);
         echo json_encode(["error" => "Failed to create user"]);

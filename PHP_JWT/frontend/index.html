@@ -15,14 +15,14 @@
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password" value="123456"><br><br>
             <button type="submit">Login</button> <!-- Alterado o tipo de botão para submit -->
-            <button class="auth_btn">Verificar auth</button>
+            <button id="auth_btn">Verificar auth</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
     const form = document.querySelector("#loginForm");
-    const auth_btn = document.querySelector(".auth_btn");
+    const auth_btn = document.querySelector("#auth_btn");
 
 
     axios.defaults.baseURL = 'http://localhost:8001';
@@ -34,28 +34,43 @@
         try{
             const formData = new FormData(event.target);
             const{data} = await axios.post('../backend/public/login.php', formData);
-            const jwt_string = JSON.stringify(data);
-            sessionStorage.setItem('session', jwt_string);
-            
+            sessionStorage.setItem('session', data.token);
+        
         }
         catch(error){
             console.log(error);
         }
     });
-        auth_btn.addEventListener('click', async () => {
-            try{
-                const auth_session = "Bearer " + sessionStorage.getItem('session');
-                const {data} = await axios.get('../backend/public/auth.php',{
-                    headers:{
-                        "Authorization": auth_session
-                    }
-                })
-                console.log(data)
-            }
-            catch(error){
-                console.log('erro');
-            }
+    auth_btn.addEventListener('click', async () => {
+        try {
+            const auth_session = "Bearer " + sessionStorage.getItem('session');
+            console.log('Auth Session:', auth_session); // Log JWT before making request
+    
+            const { data } = await axios.get('../backend/public/auth.php', {
+                headers: {
+                    "Authorization": auth_session
+                }
             });
+    
+            // Verifica se a resposta é uma string JSON
+            if (typeof data === 'string' && data.startsWith('{') && data.endsWith('}')) {
+                // Se for uma string JSON, converte para objeto
+                const responseData = JSON.parse(data);
+    
+                // Log do payload no console
+                console.log('JWT Payload:', responseData.payload);
+    
+                // Você também pode acessar outras propriedades do objeto responseData, se necessário
+                console.log('Auth Response:', responseData); // Log response from auth.php
+            } else {
+                // Se a resposta não for JSON, trata como uma mensagem de erro
+                console.error('Auth Error:', data);
+            }
+        } catch(error) {
+            console.error('Auth Error:', error);
+        }
+    });
+    
     </script>
 </body>
 </html>

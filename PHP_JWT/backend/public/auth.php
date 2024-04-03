@@ -9,25 +9,30 @@ header("Access-Control-Allow-Origin: *");
 $dotenv = Dotenv::createImmutable(dirname(__FILE__, 2));
 $dotenv->load();
 
-$auth = array_key_exists('HTTP_AUTHORIZATION', $_SERVER) ? $_SERVER['HTTP_AUTHORIZATION'] : null;
-$alg = null;
-$token = str_replace('Bearer ', '', $auth);
+// Log incoming request headers
+file_put_contents('php://stderr', print_r(getallheaders(), true));
 
-try {
-    $decoded = JWT::decode($token, $_ENV['KEY'], $alg);
-    $email = $decoded->email; // Extrai o e-mail do payload do token
-  
-    // Convert email encoding to UTF-8 (optional, based on your needs)
-    if (function_exists('mb_detect_encoding') && $original_encoding = mb_detect_encoding($email, mb_detect_order(), true)) {
-      if ($original_encoding !== 'UTF-8') {
-        $email = mb_convert_encoding($email, 'UTF-8', $original_encoding);
-      }
-    }
-  
-    // Display email in console
-    echo "User Email: " . $email . PHP_EOL;
-  
-  } catch (Throwable $e) {
-    echo "Error: " . $e->getMessage() . PHP_EOL;
-  }
+// Extract JWT from Authorization header
+$auth_header = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+$jwt = trim(str_replace('Bearer', '', $auth_header));
+
+// Log received JWT
+file_put_contents('php://stderr', 'Received JWT: ' . $jwt);
+try{
+  $decoded = JWT::decode($jwt, $_ENV['KEY']);
+  echo json_encode($decoded);
+}
+catch (Throwable $e){
+  echo json_encode($e->getMessage());
+}
+// Perform authentication logic (replace this with your actual authentication logic)
+$authenticated = true;
+
+// Respond based on authentication result
+if ($authenticated) {
+    echo 'Authenticated'; // Adjust the response as needed
+} else {
+    http_response_code(401);
+    echo 'Unauthorized';
+}
 ?>
