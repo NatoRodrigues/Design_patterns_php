@@ -2,7 +2,6 @@
 
 namespace app\classes;
 
-// Inclua a interface Cart_interface
 require_once '../app/interfaces/Cart_interface.php';
 
 use app\interfaces\Cart_interface;
