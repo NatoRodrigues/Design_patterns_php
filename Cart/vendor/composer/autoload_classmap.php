@@ -8,5 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'app\\classes\\Cart' => $baseDir . '/app/classes/Cart.php',
+    'app\\classes\\Cart_products' => $baseDir . '/app/classes/Cart_products.php',
     'app\\interfaces\\Cart_interface' => $baseDir . '/app/interfaces/Cart_interface.php',
 );
