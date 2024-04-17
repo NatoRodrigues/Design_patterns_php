@@ -1,0 +1,17 @@
+{
+    "name": "renato/mvc",
+    "autoload": {
+        "psr-4": {
+            "Renato\\Mvc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "NatoRodrigues",
+            "email": "renwise2.0@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.9"
+    }
+}
