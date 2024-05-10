@@ -1,6 +1,5 @@
 {
     "name": "renato/mvc_php",
-    "description": "mvc_updated",
     "autoload": {
         "psr-4": {
             "app\\": "app"
@@ -12,5 +11,8 @@
             "email": "renwise2.0@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^2.4",
+        "twig/extensions": "^1.5"
+    }
 }

@@ -1,0 +1,1 @@
+//configurações gerais do sistema
