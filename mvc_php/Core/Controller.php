@@ -72,8 +72,31 @@ class Controller {
 
     // Método para extrair o nome do controlador a partir da URI
     private function get_controller_name_from_uri(){
-        $segments = explode('/', trim($this->uri, '/')); // Divide a URI em segmentos
-        return ucfirst(array_shift($segments)) . '_Controller'; // Retorna o nome do controlador baseado no primeiro segmento da URI
+        // Obtém a URI atual
+        $uri = $this->uri;
+        var_dump("[DEBUG] URI original: " . $uri);
+    
+        // Remove barras no início e no final da URI
+        $trimmedUri = trim($uri, '/');
+        var_dump("[DEBUG] URI após trim: " . $trimmedUri);
+    
+        // Divide a URI em segmentos
+        $segments = explode('/', $trimmedUri);
+        var_dump("[DEBUG] Segmentos da URI: ");
+        var_dump($segments);
+    
+        // Remove e retorna o primeiro segmento
+        $firstSegment = array_shift($segments);
+        var_dump("[DEBUG] Primeiro segmento: " . $firstSegment);
+    
+        // Converte a primeira letra do segmento em maiúscula e adiciona "_Controller"
+        $controllerName = ucfirst($firstSegment) . '_Controller';
+        var_dump("[DEBUG] Nome do controlador: " . $controllerName);
+    
+        // Retorna o nome do controlador
+        return $controllerName;
     }
+    
+    
 }
 ?>
