@@ -6,10 +6,13 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'app\\controllers\\portal\\' => array($baseDir . '/app/controllers/portal'),
+    'app\\controllers\\admin\\' => array($baseDir . '/app/controllers/admin'),
     'app\\' => array($baseDir . '/app'),
     'Twig\\Extensions\\' => array($vendorDir . '/twig/extensions/src'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Symfony\\Polyfill\\Php72\\' => array($vendorDir . '/symfony/polyfill-php72'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
+    'Core\\' => array($baseDir . '/Core'),
 );

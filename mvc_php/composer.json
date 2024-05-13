@@ -2,7 +2,10 @@
     "name": "renato/mvc_php",
     "autoload": {
         "psr-4": {
-            "app\\": "app"
+            "app\\": "app",
+            "Core\\": "Core",
+            "app\\controllers\\portal\\": "app/controllers/portal/",
+            "app\\controllers\\admin\\": "app/controllers/admin/"
         }
     },
     "authors": [
