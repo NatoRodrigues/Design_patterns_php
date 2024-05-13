@@ -22,6 +22,7 @@ class Controller {
     // Método principal para obter o controlador adequado com base na URI
     public function get_controller() {
         if ($this->is_home()) { // Verifica se está na página inicial
+            echo 'controlador home';
             return $this->controller_home(); // Retorna o controlador da página inicial
         }
         return $this->controller_not_home(); // Retorna o controlador para outras páginas
