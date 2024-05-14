@@ -92,6 +92,7 @@ class ComposerStaticInit39fbef6e7c33a01b65b612eac9cd68a7
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Core\\Controller' => __DIR__ . '/../..' . '/Core/Controller.php',
+        'Core\\Method' => __DIR__ . '/../..' . '/Core/Method.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
@@ -483,7 +484,9 @@ class ComposerStaticInit39fbef6e7c33a01b65b612eac9cd68a7
         'Twig_Util_TemplateDirIterator' => __DIR__ . '/..' . '/twig/twig/lib/Twig/Util/TemplateDirIterator.php',
         'app\\classes\\Uri' => __DIR__ . '/../..' . '/app/classes/Uri.php',
         'app\\controllers\\portal\\Home_Controller' => __DIR__ . '/../..' . '/app/controllers/portal/Home_Controller.php',
+        'app\\controllers\\portal\\Produto_Controller' => __DIR__ . '/../..' . '/app/controllers/portal/Produto_Controller.php',
         'app\\exceptions\\Controller_not_Exist_exception' => __DIR__ . '/../..' . '/app/exceptions/Controller_not_Exist_exception.php',
+        'app\\exceptions\\Method_not_Exist_exception' => __DIR__ . '/../..' . '/app/exceptions/Method_not_Exist_exception.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

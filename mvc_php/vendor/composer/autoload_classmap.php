@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Core\\Controller' => $baseDir . '/Core/Controller.php',
+    'Core\\Method' => $baseDir . '/Core/Method.php',
     'Symfony\\Polyfill\\Ctype\\Ctype' => $vendorDir . '/symfony/polyfill-ctype/Ctype.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Symfony\\Polyfill\\Php72\\Php72' => $vendorDir . '/symfony/polyfill-php72/Php72.php',
@@ -399,5 +400,7 @@ return array(
     'Twig_Util_TemplateDirIterator' => $vendorDir . '/twig/twig/lib/Twig/Util/TemplateDirIterator.php',
     'app\\classes\\Uri' => $baseDir . '/app/classes/Uri.php',
     'app\\controllers\\portal\\Home_Controller' => $baseDir . '/app/controllers/portal/Home_Controller.php',
+    'app\\controllers\\portal\\Produto_Controller' => $baseDir . '/app/controllers/portal/Produto_Controller.php',
     'app\\exceptions\\Controller_not_Exist_exception' => $baseDir . '/app/exceptions/Controller_not_Exist_exception.php',
+    'app\\exceptions\\Method_not_Exist_exception' => $baseDir . '/app/exceptions/Method_not_Exist_exception.php',
 );
